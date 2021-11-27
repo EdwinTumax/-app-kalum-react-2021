@@ -17,7 +17,8 @@ export default function Navigation() {
             </Navbar.Toggle>
             <Navbar.Collapse id="main-menu">
                 <Nav className="mr-auto">
-                    {loggedIn && <Nav.Link>Clases</Nav.Link>}                                        
+                    {loggedIn && <Nav.Link as = {NavLink} to="/clases">Clases</Nav.Link>}                                        
+                    {loggedIn && <Nav.Link as = {NavLink} to="/clases">Carreras Técnicas</Nav.Link>}                                        
                 </Nav>                
                 <Nav>
                     {
@@ -28,7 +29,7 @@ export default function Navigation() {
                                 </Nav.Link>
                             </React.Fragment>)
                             :
-                            (<NavDropdown title={user.user_name} id="menu-dropdown">
+                            (<NavDropdown title={`${user.apellidos} ${user.nombres}`} id="menu-dropdown">
                                 <NavDropdown.Item>Inscripción</NavDropdown.Item>
                                 <NavDropdown.Item onClick={ () => dispatch(logoutUser())}>Logout</NavDropdown.Item>
                             </NavDropdown>)

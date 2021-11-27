@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {Form, Button} from 'react-bootstrap';
 export default function LoginForm({errores, onSubmitCallback}) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('etumax');
+    const [password, setPassword] = useState('Kalum.2021');
     const submitForm = (e) => {
         e.preventDefault();
         onSubmitCallback({username,password});
