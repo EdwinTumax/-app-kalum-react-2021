@@ -18,8 +18,12 @@ export default function Navigation() {
             <Navbar.Collapse id="main-menu">
                 <Nav className="mr-auto">
                     {loggedIn && <Nav.Link as = {NavLink} to="/clases">Clases</Nav.Link>}                                        
+<<<<<<< HEAD
                     {loggedIn && <Nav.Link as = {NavLink} to="/clases">Carreras Técnicas</Nav.Link>}
                     {loggedIn && <Nav.Link as = {NavLink} to="/asignaciones-alumno">Mis asignaciones</Nav.Link>}                                        
+=======
+                    {loggedIn && <Nav.Link as = {NavLink} to="/clases">Carreras Técnicas</Nav.Link>}                                        
+>>>>>>> ec64b409081217a3599d3c3e4044db5be26d0235
                 </Nav>                
                 <Nav>
                     {
