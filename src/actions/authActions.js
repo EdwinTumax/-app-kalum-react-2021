@@ -1,8 +1,22 @@
 import axios from 'axios';
-import { LOGIN_ENDPOINT, APP_USERNAME, APP_PASSWORD } from '../utils/endPoints';
+import { REGISTER_USER_ENDPOINT, LOGIN_ENDPOINT, APP_USERNAME, APP_PASSWORD } from '../utils/endPoints';
 import qs from 'querystring';
 import setAuthToken from '../utils/setAuthToken';
 import { SET_CURRENT_USER } from './types';
+
+export const accountCreated = (userData) => dispatch => {
+    return new Promise((resolve,reject) => {
+        axios.post(REGISTER_USER_ENDPOINT, userData, {headers: {'Content-Type':'application/json'}})
+            .then(response => {
+                console.log(JSON.stringify(response));
+                resolve(response);
+            }).catch(error => {
+                console.log(JSON.stringify(error));
+                reject(error);
+            });
+    });
+}
+
 export const logInUser = (userData) => dispatch => {
     const token = Buffer.from(`${APP_USERNAME}:${APP_PASSWORD}`,'utf8').toString('base64');
     const config = {

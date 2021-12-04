@@ -7,6 +7,7 @@ import { isObjectEmpty } from '../utils/helpers'
 import { useDispatch, useSelector } from 'react-redux'
 import { logInUser } from '../actions/authActions'
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 export default function Login() {
     const [errores, setErrores] = useState({});
@@ -35,9 +36,19 @@ export default function Login() {
         }
 
         dispatch(logInUser({username,password})).then(response => {
-            console.log(response.data.access_token);
+            Swal.fire({
+                icon: 'success',
+                title: 'Login',
+                text: `Bienvenido al sistema ${username}`,
+                footer: '<a href="#">Kalum v1.0.0</a>'
+            });
         }).catch(error => {
-            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Login',
+                text: `Error al momento de realizar la autenticación`,
+                footer: '<a href="#">Kalum v1.0.0</a>'
+            });
         });
 
     }
@@ -51,7 +62,7 @@ export default function Login() {
                         <hr></hr>
                         <LoginForm errores={errores} onSubmitCallback={login}></LoginForm>
                         <div className="mt-4">
-                            <Link to={"/login"}>No tiene una cuenta?, registrese aquí</Link>
+                            <Link to={"/register-user"}>No tiene una cuenta?, registrese aquí</Link>
                         </div>
                     </Card>
                 </Col>

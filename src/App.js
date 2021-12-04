@@ -9,6 +9,10 @@ import store from './store';
 import { Provider } from 'react-redux';
 import checkForToken from './utils/checkForToken';
 import PrivateRoute from './utils/PrivateRoute';
+import RegisterUser from './pages/RegisterUser';
+import Clases from './pages/Clases';
+import AsignacionClase from './pages/AsignacionClase';
+import AsignacionesPorAlumno from './pages/AsignacionesPorAlumno';
 
 checkForToken();
 
@@ -22,7 +26,11 @@ const App = () => {
                 <Container>
                     <Switch>
                         <PrivateRoute exact path="/carreras-tecnicas" component={CarrerasTecnicas}></PrivateRoute>
+                        <PrivateRoute exact path="/clases" component={Clases}></PrivateRoute>
+                        <PrivateRoute exact path="/asignacion-clase/:uuid" component={AsignacionClase}></PrivateRoute>
+                        <PrivateRoute exact path="/asignaciones-alumno" component={AsignacionesPorAlumno}></PrivateRoute>
                         <Route exact path="/login" component={Login}></Route>
+                        <Route exact path="/register-user" component = {RegisterUser}></Route>
                     </Switch>
                 </Container>
             </Router>
