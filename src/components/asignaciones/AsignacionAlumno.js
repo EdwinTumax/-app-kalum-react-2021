@@ -68,28 +68,28 @@ export default function AsignacionAlumno({ asignacionData, registro, user}) {
 
                 <Modal.Body>
                     <Form>
-                    <Form.Group control = "carne">
-                        <Form.Label>Carné</Form.Label>
-                        <Form.Control type="text" value={user.carne}                             
-                            placeholder="Número de Carné"/>
-                    </Form.Group>
-                    <Form.Group control = "apellidos">
-                        <Form.Label>Apellidos</Form.Label>
-                        <Form.Control type="text" value={user.apellidos}                             
-                            placeholder="Apellidos"/>
-                    </Form.Group>
-                    <Form.Group control = "nombres">
-                        <Form.Label>Nombres</Form.Label>
-                        <Form.Control type="text" value={user.nombres}                             
-                            placeholder="Nombres"/>
-                    </Form.Group>                    
-                    <Form.Group control = "nombres">
-                        <Form.Label>Clases</Form.Label>
-                        <Form.Control type="select">
-                            
-                        </Form.Control>
-                    </Form.Group>                    
-                </Form>
+                        <Form.Group control = "carne">
+                            <Form.Label>Carné</Form.Label>
+                            <Form.Control type="text" value={user.carne}                             
+                                placeholder="Número de Carné"/>
+                        </Form.Group>
+                        <Form.Group control = "apellidos">
+                            <Form.Label>Apellidos</Form.Label>
+                            <Form.Control type="text" value={user.apellidos}                             
+                                placeholder="Apellidos"/>
+                        </Form.Group>
+                        <Form.Group control = "nombres">
+                            <Form.Label>Nombres</Form.Label>
+                            <Form.Control type="text" value={user.nombres}                             
+                                placeholder="Nombres"/>
+                        </Form.Group>                    
+                        <Form.Group control = "nombres">
+                            <Form.Label>Clases</Form.Label>
+                            <Form.Control type="select">
+                                
+                            </Form.Control>
+                        </Form.Group>                    
+                    </Form>
                 </Modal.Body>
 
                 <Modal.Footer>
