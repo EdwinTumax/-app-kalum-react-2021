@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import { Card, Col, Container } from 'react-bootstrap';
 import AsignacionClaseForm from '../components/forms/AsignacionClaseForm';
@@ -10,6 +10,7 @@ import { isObjectEmpty } from '../utils/helpers';
 import moment from 'moment';
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom';
+import { getAsignacionesPorAlumno } from '../actions/alumnoActions';
 
 export default function AsignacionClase() {
     const [errores,setErrores] = useState({});
@@ -18,6 +19,7 @@ export default function AsignacionClase() {
     const user = useSelector(state => state.auth.user);
     const history = useHistory();    
     const { uuid } = useParams()
+    const distpach = useDispatch();
     useEffect(() => {
         axios.get(`${CLASES_ENPOINT}/${uuid}`).then(response => {
             setClase(response.data);
@@ -36,12 +38,12 @@ export default function AsignacionClase() {
             setErrores = (errores);
             return;
         }
-        console.log('inciando proceso registro');
         try{
             registro.fechaAsignacion = moment(new Date()).format('YYYY-MM-DD');
             registro.alumno.carne = user.carne;
             registro.clase.claseId = uuid;
             const response = await axios.post(`${ASIGNACIONES_ENDPOINT}`,registro);
+            await distpach(getAsignacionesPorAlumno(user.carne));
             Swal.fire({
                 icon: 'success',
                 title: 'Asignación de clase',
@@ -49,7 +51,7 @@ export default function AsignacionClase() {
                 footer: '<a href="#">Kalum v1.0.0</a>'
             }).then(result => {
                 if(result.isConfirmed){
-                    history.push('/clases');
+                    history.push('/asignaciones-alumno');
                 }
             });
         }catch(error){
